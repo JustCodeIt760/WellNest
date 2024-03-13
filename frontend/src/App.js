@@ -1,21 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// src/App.js
+import React, { useState } from 'react';
 import './App.css';
+import LoginModal from './components/LoginModal';
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className="App">
+      <button onClick={() => setIsModalOpen(true)}>Log In</button>
+      <LoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </div>
   );
 }
-
-const Home = () => <h2>Home Page</h2>;
-const Login = () => <h2>Login Page</h2>;
 
 export default App;
